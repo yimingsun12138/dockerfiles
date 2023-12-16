@@ -8,3 +8,6 @@ I am a loyal user of Google Colab. With the help of my self-written Python packa
 
 ### ubuntu
 I prefer using Ubuntu as my Linux operating system. Therefore, I've tailored the [official ubuntu image](https://hub.docker.com/_/ubuntu) according to my needs. This includes installing several dependencies I regularly use in my data analysis work. Additionally, I've created a sudo user with the username 'knight' and the password 'midnight'. Moving forward, this customized Ubuntu image will serve as the foundation for the majority of the Docker images I create.
+
+### jupyterlab
+A JupyterLab image built on my personalized Ubuntu image, featuring Python version 3.10.12. The token for this JupyterLab server will be generated randomly. Please check the console after executing the docker run command for the token.
