@@ -31,8 +31,8 @@ ENV PATH=$PATH:${CONDA_PREFIX}/bin
 RUN echo "conda activate ${CONDA_DEFAULT_ENV}" >> /home/${default_user}/.bashrc
 
 # Install jupyterlab
-RUN conda install -c conda-forge jupyterlab -y
-RUN conda install -c conda-forge tini -y
+RUN conda install -c conda-forge jupyterlab -y && \
+    conda install -c conda-forge tini -y
 
 # Expose the jupyterlab web port
 EXPOSE 8888
