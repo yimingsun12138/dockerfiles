@@ -36,5 +36,5 @@ RUN apt install -y screen && \
 USER ${default_user}
 WORKDIR /home/${default_user}
 
-# Initiate bash shell
+# Run bash shell
 CMD ["/bin/bash"]

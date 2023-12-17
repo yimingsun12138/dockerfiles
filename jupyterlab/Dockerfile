@@ -20,14 +20,14 @@ RUN mkdir -p /home/${default_user}/miniconda3 && \
     rm -rf /home/${default_user}/miniconda3/miniconda.sh && \
     /home/${default_user}/miniconda3/bin/conda init bash && \
     /home/${default_user}/miniconda3/bin/conda init zsh
-ENV PATH=$PATH:/home/${default_user}/miniconda3/bin
+ENV PATH=/home/${default_user}/miniconda3/bin:$PATH
 
 # Init jupyterlab conda env
 RUN conda install -c conda-forge conda-build -y
 ENV CONDA_DEFAULT_ENV=jupyterlab
 RUN conda create --name ${CONDA_DEFAULT_ENV} python=${python_version} -y
 ENV CONDA_PREFIX=/home/${default_user}/miniconda3/envs/${CONDA_DEFAULT_ENV}
-ENV PATH=$PATH:${CONDA_PREFIX}/bin
+ENV PATH=${CONDA_PREFIX}/bin:$PATH
 RUN echo "conda activate ${CONDA_DEFAULT_ENV}" >> /home/${default_user}/.bashrc
 
 # Install jupyterlab
