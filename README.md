@@ -22,7 +22,7 @@ udocker run --user knight mrdoge/ubuntu /bin/bash
 ```
 
 ### jupyterlab
-A [jupyterlab](https://jupyterlab.readthedocs.io/en/latest/index.html) image built on my personalized ubuntu image, featuring Python version 3.10.13. The token for this jupyterlab server will be generated randomly. Please check the console after executing the `docker run` command for the token.
+A [jupyterlab](https://jupyterlab.readthedocs.io/en/latest/index.html) image built on my personalized ubuntu image, featuring Python version 3.10.13, R version 4.3.3. The token for this jupyterlab server will be generated randomly. Please check the console after executing the `docker run` command for the token.
 
 docker usage:
 ```
