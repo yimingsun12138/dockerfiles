@@ -1,6 +1,7 @@
 # Start with mrdoge/ubuntu image
 FROM mrdoge/ubuntu:latest
 ENV python_version=3.10.13
+ENV r_version=4.3.3
 
 # Update environment
 USER root
@@ -31,8 +32,10 @@ ENV PATH=${CONDA_PREFIX}/bin:$PATH
 RUN echo "conda activate ${CONDA_DEFAULT_ENV}" >> /home/${default_user}/.bashrc
 
 # Install jupyterlab
-RUN conda install -c conda-forge jupyterlab -y && \
-    conda install -c conda-forge tini -y
+RUN conda install -c conda-forge tini -y && \
+    conda install -c conda-forge r-base=${r_version} -y && \
+    conda install -c conda-forge r-irkernel -y && \
+    conda install -c conda-forge jupyterlab -y
 
 # Expose the jupyterlab web port
 EXPOSE 8888
