@@ -1,7 +1,6 @@
 # Start with mrdoge/ubuntu image
 FROM mrdoge/ubuntu:latest
 ENV python_version=3.10.13
-ENV r_version=4.3.3
 
 # Update environment
 USER root
@@ -9,6 +8,10 @@ WORKDIR /root
 RUN apt update && \
     apt upgrade -y && \
     apt autoremove -y
+
+# Install IRkernel for R
+RUN Rscript -e "install.packages('remotes')" && \
+    Rscript -e "remotes::install_github(repo = 'IRkernel/IRkernel')"
 
 # Switch to user knight
 USER ${default_user}
@@ -33,9 +36,10 @@ RUN echo "conda activate ${CONDA_DEFAULT_ENV}" >> /home/${default_user}/.bashrc
 
 # Install jupyterlab
 RUN conda install -c conda-forge tini -y && \
-    conda install -c conda-forge r-base=${r_version} -y && \
-    conda install -c conda-forge r-irkernel -y && \
     conda install -c conda-forge jupyterlab -y
+
+# Add R kernel to jupyterlab
+RUN Rscript -e "IRkernel::installspec(name = 'R',displayname = 'R')"
 
 # Expose the jupyterlab web port
 EXPOSE 8888
