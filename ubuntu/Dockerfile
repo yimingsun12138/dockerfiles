@@ -23,7 +23,7 @@ RUN useradd -m -s /bin/bash ${default_user} && \
 # Install R
 RUN apt install -y dirmngr gnupg apt-transport-https ca-certificates software-properties-common libcurl4-gnutls-dev libpango-1.0-0 libpango1.0-dev \
     openjdk-11-jdk libx11-dev libxext-dev libxtst-dev libxrender-dev libxmu-dev libxmuu-dev tcl tcl-dev tk tk-dev libtiff-dev libharfbuzz-dev \
-    libfribidi-dev libgsl-dev libudunits2-dev libmagick++-dev libglpk-dev libssl-dev
+    libfribidi-dev libgsl-dev libudunits2-dev libmagick++-dev libglpk-dev libssl-dev libhdf5-dev
 RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc && \
     add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" && \
     apt install -y r-base && \
