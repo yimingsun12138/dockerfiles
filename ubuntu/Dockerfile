@@ -26,8 +26,7 @@ RUN apt install -y dirmngr gnupg apt-transport-https ca-certificates software-pr
     libfribidi-dev libgsl-dev libudunits2-dev libmagick++-dev libglpk-dev libssl-dev libhdf5-dev cmake libgdal-dev
 RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc && \
     add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" && \
-    apt install -y r-base && \
-    add-apt-repository ppa:c2d4u.team/c2d4u4.0+
+    apt install -y r-base
 
 # Install other dependency
 RUN apt install -y screen && \

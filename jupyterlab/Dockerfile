@@ -1,6 +1,6 @@
 # Start with mrdoge/ubuntu image
 FROM mrdoge/ubuntu:latest
-ENV python_version=3.10.13
+ENV python_version=3.12.4
 
 # Update environment
 USER root
