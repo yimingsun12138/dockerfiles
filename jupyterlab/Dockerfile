@@ -22,8 +22,7 @@ RUN mkdir -p /home/${default_user}/miniconda3 && \
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /home/${default_user}/miniconda3/miniconda.sh && \
     bash /home/${default_user}/miniconda3/miniconda.sh -b -u -p /home/${default_user}/miniconda3 && \
     rm -rf /home/${default_user}/miniconda3/miniconda.sh && \
-    /home/${default_user}/miniconda3/bin/conda init bash && \
-    /home/${default_user}/miniconda3/bin/conda init zsh
+    /home/${default_user}/miniconda3/bin/conda init --all
 ENV PATH=/home/${default_user}/miniconda3/bin:$PATH
 
 # Init jupyterlab conda env
