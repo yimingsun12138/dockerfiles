@@ -12,19 +12,10 @@ RUN apt update && \
 # Install rstudio server
 RUN mkdir -p /tmp/rstudio_server_install && \
     wget ${rstudio_server_url} -O /tmp/rstudio_server_install/rstudio_server.deb && \
-    gdebi -n /tmp/rstudio_server_install/rstudio_server.deb && \
-    rm -rf /tmp/rstudio_server_install
-
-# Create sudo user rstudio to run rstudio server
-RUN useradd -m -s /bin/bash rstudio && \
-    echo "rstudio ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
-# Switch to user rstudio
-USER rstudio
-WORKDIR /home/rstudio
+    gdebi -n /tmp/rstudio_server_install/rstudio_server.deb
 
 # Expose the rstudio server web port
 EXPOSE 8787
 
 # Run rstudio server
-CMD ["sudo","/usr/lib/rstudio-server/bin/rserver","--server-daemonize=0","--www-port=8787"]
+CMD ["/usr/lib/rstudio-server/bin/rserver","--server-daemonize=0","--www-port=8787"]

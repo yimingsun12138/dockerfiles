@@ -15,7 +15,7 @@ RUN apt update && \
 # Install dependency
 RUN apt install -y sudo git vim wget curl python3 python3-venv python3-pip gdebi-core
 
-# Create sudo user knight
+# Create default user
 RUN useradd -m -s /bin/bash ${default_user} && \
     echo "${default_user}:${default_password}" | chpasswd && \
     usermod -G sudo ${default_user}
@@ -33,7 +33,7 @@ RUN apt install -y screen && \
     apt install -y expect && \
     apt install -y nfs-common
 
-# Switch to user knight
+# Switch to default user
 USER ${default_user}
 WORKDIR /home/${default_user}
 

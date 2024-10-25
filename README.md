@@ -2,7 +2,7 @@
 
 Various Dockerfiles I use on servers.
 
-Update: 2024/10/24
+Update: 2024/10/25
 
 ## Motivation
 
@@ -30,19 +30,19 @@ udocker run --user knight mrdoge/ubuntu /bin/bash
 
 ### jupyterlab
 
-A [jupyterlab](https://jupyterlab.readthedocs.io/en/latest/index.html) image built on my personalized ubuntu image, featuring Python version 3.12.4, R version 4.4.1. The token for this jupyterlab server will be generated randomly. Please check the console after executing the `docker run` command for the token.
+A [jupyterlab](https://jupyterlab.readthedocs.io/en/latest/index.html) image built on my personalized ubuntu image, featuring Python version 3.12.4, R version 4.4.1. The login token for this jupyterlab server will be generated randomly. Please check the console after executing the `docker run` command for the login token.
 
 docker usage:
 
 ```
-# To get the jupyterlab token, run this image interactively
+# To get the jupyterlab login token, run this image interactively
 docker pull mrdoge/jupyterlab
 docker run -it -p 8888:8888 mrdoge/jupyterlab
 
 # To detach the session, use the screen command
 screen -d -m docker run -it -p 8888:8888 mrdoge/jupyterlab
 
-# You can also run this image in background and get the token using docker logs
+# You can also run this image in background and get the login token using docker logs
 docker run -d -p 8888:8888 mrdoge/jupyterlab
 docker ps # get your container id
 docker logs your-container-id
