@@ -57,7 +57,7 @@ screen -d -m udocker run -p 8888:8888 mrdoge/jupyterlab
 
 ### rstudio_server
 
-A [rstudio server](https://posit.co/products/open-source/rstudio-server/) image built on my personalized ubuntu image.
+A [rstudio server](https://posit.co/products/open-source/rstudio-server/) image built on my personalized ubuntu image. Note that the current image does not support running through udocker (sudo command is not allowed in udocker).
 
 docker usage:
 
@@ -66,9 +66,4 @@ docker pull mrdoge/rstudio_server
 docker run -d -p 8787:8787 mrdoge/rstudio_server
 ```
 
-udocker usage:
-
-```
-udocker pull mrdoge/rstudio_server
-screen -d -m udocker run -p 8787:8787 mrdoge/rstudio_server
-```
+Sign in the rstudio server web IDE using the default user 'knight' mentioned above.
