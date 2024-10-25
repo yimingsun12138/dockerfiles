@@ -13,7 +13,7 @@ RUN apt update && \
     apt autoremove -y
 
 # Install dependency
-RUN apt install -y sudo git vim wget curl python3 python3-venv python3-pip
+RUN apt install -y sudo git vim wget curl python3 python3-venv python3-pip gdebi-core
 
 # Create sudo user knight
 RUN useradd -m -s /bin/bash ${default_user} && \

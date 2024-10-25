@@ -13,7 +13,7 @@ RUN apt update && \
 RUN Rscript -e "install.packages('remotes')" && \
     Rscript -e "remotes::install_github(repo = 'IRkernel/IRkernel')"
 
-# Switch to user knight
+# Switch to default user
 USER ${default_user}
 WORKDIR /home/${default_user}
 
@@ -25,7 +25,7 @@ RUN mkdir -p /home/${default_user}/miniconda3 && \
     /home/${default_user}/miniconda3/bin/conda init --all
 ENV PATH=/home/${default_user}/miniconda3/bin:$PATH
 
-# Init jupyterlab conda env
+# Initiate jupyterlab conda env
 RUN conda install -c conda-forge conda-build -y
 ENV CONDA_DEFAULT_ENV=jupyterlab
 RUN conda create --name ${CONDA_DEFAULT_ENV} python=${python_version} -y
