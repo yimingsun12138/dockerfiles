@@ -1,6 +1,6 @@
 # Start with mrdoge/ubuntu image
 FROM mrdoge/ubuntu:latest
-ENV python_version=3.12.4
+ENV Python_version=3.12.4
 
 # Update environment
 USER root
@@ -17,7 +17,7 @@ RUN Rscript -e "install.packages('remotes')" && \
 USER ${default_user}
 WORKDIR /home/${default_user}
 
-# Install miniconda
+# Install Miniconda
 RUN mkdir -p /home/${default_user}/miniconda3 && \
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /home/${default_user}/miniconda3/miniconda.sh && \
     bash /home/${default_user}/miniconda3/miniconda.sh -b -u -p /home/${default_user}/miniconda3 && \
@@ -25,24 +25,25 @@ RUN mkdir -p /home/${default_user}/miniconda3 && \
     /home/${default_user}/miniconda3/bin/conda init --all
 ENV PATH=/home/${default_user}/miniconda3/bin:$PATH
 
-# Initiate jupyterlab conda env
+# Initialize JupyterLab conda env
 RUN conda install -c conda-forge conda-build -y
-ENV CONDA_DEFAULT_ENV=jupyterlab
-RUN conda create --name ${CONDA_DEFAULT_ENV} python=${python_version} -y
+ENV CONDA_DEFAULT_ENV=JupyterLab
+RUN conda create --name ${CONDA_DEFAULT_ENV} python=${Python_version} -y
 ENV CONDA_PREFIX=/home/${default_user}/miniconda3/envs/${CONDA_DEFAULT_ENV}
 ENV PATH=${CONDA_PREFIX}/bin:$PATH
-RUN echo "conda activate ${CONDA_DEFAULT_ENV}" >> /home/${default_user}/.bashrc
+RUN echo "" >> /home/${default_user}/.bashrc && \
+    echo "conda activate ${CONDA_DEFAULT_ENV}" >> /home/${default_user}/.bashrc
 
-# Install jupyterlab
+# Install JupyterLab
 RUN conda install -c conda-forge tini -y && \
     conda install -c conda-forge jupyterlab -y
 
-# Add R kernel to jupyterlab
+# Add R kernel to JupyterLab
 RUN Rscript -e "IRkernel::installspec(name = 'R',displayname = 'R')"
 
-# Expose the jupyterlab web port
+# Expose the JupyterLab web port
 EXPOSE 8888
 
-# Run jupyterlab
+# Run JupyterLab
 ENTRYPOINT ["tini","-g","--"]
 CMD ["jupyter","lab","--ip=0.0.0.0","--port=8888","--no-browser"]

@@ -1,6 +1,6 @@
 # Start with mrdoge/ubuntu image
 FROM mrdoge/ubuntu:latest
-ENV rstudio_server_url=https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2024.09.0-375-amd64.deb
+ENV Rstudio_server_url=https://s3.ap-east-1.amazonaws.com/mrdoge-s3-bucket/share/resource_for_download/rstudio_server_for_mrdoge_ubuntu.deb
 
 # Update environment
 USER root
@@ -9,12 +9,13 @@ RUN apt update && \
     apt upgrade -y && \
     apt autoremove -y
 
-# Install rstudio server
-RUN mkdir -p /tmp/rstudio_server_install && \
-    wget ${rstudio_server_url} -O /tmp/rstudio_server_install/rstudio_server.deb && \
-    gdebi -n /tmp/rstudio_server_install/rstudio_server.deb
+# Install Rstudio server
+RUN mkdir -p /tmp/Rstudio_server_install && \
+    wget ${Rstudio_server_url} -O /tmp/Rstudio_server_install/rstudio_server.deb && \
+    gdebi -n /tmp/Rstudio_server_install/rstudio_server.deb && \
+    rm -rf /tmp/Rstudio_server_install/rstudio_server.deb
 
-# Create sudo user rstudio to run rstudio server
+# Create sudo user rstudio to run Rstudio server
 RUN useradd -m -s /bin/bash rstudio && \
     echo "rstudio ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
@@ -22,8 +23,8 @@ RUN useradd -m -s /bin/bash rstudio && \
 USER rstudio
 WORKDIR /home/rstudio
 
-# Expose the rstudio server web port
+# Expose the Rstudio server web port
 EXPOSE 8787
 
-# Run rstudio server
+# Run Rstudio server
 CMD ["sudo","/usr/lib/rstudio-server/bin/rserver","--server-daemonize=0","--www-port=8787"]
