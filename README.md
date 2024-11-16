@@ -2,7 +2,7 @@
 
 Various Dockerfiles I use on servers.
 
-Update: 2024/11/04
+Update: 2024/11/16
 
 ## Motivation
 
@@ -12,7 +12,7 @@ I am a loyal user of [Google Colab](https://colab.research.google.com/). With th
 
 ### ubuntu
 
-I prefer using Ubuntu as my Linux operating system. Therefore, I've tailored the [official ubuntu image](https://hub.docker.com/_/ubuntu) according to my own needs. This includes creating a sudo user "knight" with the password "midnight" and installing several dependencies regularly used in my data analysis workflow. Moving forward, this customized ubuntu image will server as the foundation for other Docker images I create.
+I prefer using Ubuntu as my Linux operating system. Therefore, I've tailored the [official ubuntu image](https://hub.docker.com/_/ubuntu) according to my own needs. This includes creating a sudo user "knight" with the password "midnight" and installing several dependencies regularly used in my data analysis workflow. Moving forward, this customized ubuntu image will serve as the foundation for other Docker images I create.
 
 docker usage:
 
