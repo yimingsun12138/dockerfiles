@@ -2,7 +2,7 @@
 
 Various Dockerfiles I use on servers.
 
-Update: 2024/11/21
+Update: 2024/11/30
 
 ## Motivation
 
@@ -19,6 +19,9 @@ docker usage:
 ```
 docker pull mrdoge/ubuntu
 docker run -it mrdoge/ubuntu
+
+# OpenSSH server is also supported by this ubuntu image
+docker run -d --user root mrdoge/ubuntu /usr/sbin/sshd -D
 ```
 
 udocker usage:

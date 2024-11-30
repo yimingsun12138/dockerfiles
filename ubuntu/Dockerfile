@@ -15,7 +15,7 @@ RUN apt update && \
 # Install dependencies
 RUN apt install -y sudo openssh-server rsync git vim wget curl \
     python3 python3-venv python3-pip \
-    gdebi-core screen expect nfs-common
+    gdebi-core screen expect nfs-common sshfs
 
 # Create default user
 RUN useradd -m -s /bin/bash ${default_user} && \
