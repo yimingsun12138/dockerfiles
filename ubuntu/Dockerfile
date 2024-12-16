@@ -13,9 +13,11 @@ RUN apt update && \
     apt autoremove -y
 
 # Install dependencies
-RUN apt install -y sudo openssh-server rsync git vim wget curl \
+RUN apt install -y sudo openssh-server rsync wget curl git \
+    vim time rename screen expect \
     python3 python3-venv python3-pip \
-    gdebi-core screen expect nfs-common sshfs
+    nfs-common sshfs \
+    gdebi-core
 
 # Create default user
 RUN useradd -m -s /bin/bash ${default_user} && \
