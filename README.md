@@ -2,7 +2,7 @@
 
 Various Dockerfiles I use on servers.
 
-Update: 2025/02/11
+Update: 2025/03/18
 
 ## Motivation
 
@@ -33,7 +33,7 @@ udocker run --user knight mrdoge/ubuntu /bin/bash
 
 ### jupyterlab
 
-A [jupyterlab](https://jupyterlab.readthedocs.io/en/latest/index.html) image built on my personalized ubuntu image, featuring Python version 3.12.4, R version 4.4.2. The login token for this JupyterLab server will be generated randomly. Please check the console after executing the `docker run` command for the login token.
+A [jupyterlab](https://jupyterlab.readthedocs.io/en/latest/index.html) image built on my personalized ubuntu image, featuring Python version 3.12.4, R version 4.4.3. The login token for this JupyterLab server will be generated randomly. Please check the console after executing the `docker run` command for the login token.
 
 docker usage:
 
