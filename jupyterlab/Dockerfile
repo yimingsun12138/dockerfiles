@@ -26,7 +26,6 @@ RUN mkdir -p /home/${default_user}/miniconda3 && \
 ENV PATH=/home/${default_user}/miniconda3/bin:$PATH
 
 # Initialize JupyterLab conda env
-RUN conda install -c conda-forge conda-build -y
 ENV CONDA_DEFAULT_ENV=JupyterLab
 RUN conda create --name ${CONDA_DEFAULT_ENV} python=${Python_version} -y
 ENV CONDA_PREFIX=/home/${default_user}/miniconda3/envs/${CONDA_DEFAULT_ENV}
