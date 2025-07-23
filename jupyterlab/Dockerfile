@@ -24,6 +24,8 @@ RUN mkdir -p /home/${default_user}/miniconda3 && \
     rm -rf /home/${default_user}/miniconda3/miniconda.sh && \
     /home/${default_user}/miniconda3/bin/conda init --all
 ENV PATH=/home/${default_user}/miniconda3/bin:$PATH
+RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 
 # Initialize JupyterLab conda env
 ENV CONDA_DEFAULT_ENV=JupyterLab
